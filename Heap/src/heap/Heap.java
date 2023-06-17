@@ -128,7 +128,7 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
     public String toString() {
         String content = "{";
         for (T element : heap) {
-            content += (element + ",");
+            content += (element );
         }
         return content + "}";
     }
