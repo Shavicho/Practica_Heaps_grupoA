@@ -1,14 +1,3 @@
-
-
-/**
-
-Estructura de datos y algoritmos
-Integrantes:
-Coronado Peña Javier
-Nina Suyo Diego Claudio
-https://github.com/Shavicho/Practica_Heaps_grupoA.git
- */
-
 import java.util.ArrayList;
 
 public class MaxHeap<T extends Comparable<T>> {
