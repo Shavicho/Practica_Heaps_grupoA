@@ -8,5 +8,7 @@ public interface HeapInterface<T> {
 
     T obtenerMaximo() throws Exception;
 
+    T obtenerMinimo() throws Exception;
+
     boolean isEmpty();
 }

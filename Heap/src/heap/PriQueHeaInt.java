@@ -4,9 +4,9 @@ public interface PriQueHeaInt<T> {
 
     void enqueue(T elemento, int prioridad);
 
-    T dequeue();
+    T dequeue() throws Exception;
 
-    T front();
+    T front() throws Exception;
 
     T back() throws Exception;
 }

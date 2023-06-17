@@ -30,4 +30,9 @@ public class Elemento<T extends Comparable<T>> implements Comparable<Elemento<T>
     public int compareTo(Elemento<T> t) {
         return Integer.compare(this.prioridad, t.getPrioridad());
     }
+
+    @Override
+    public String toString() {
+        return "Elemento{" + "prioridad=" + prioridad + ", elemento=" + elemento + '}';
+    }
 }

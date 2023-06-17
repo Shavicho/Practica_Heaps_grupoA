@@ -38,6 +38,14 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
         }
         return this.heap.get(0);
     }
+    
+    @Override
+    public T obtenerMinimo() throws Exception {
+        if (this.heap.isEmpty()) {
+            throw new Exception("El heap esta vacio");
+        }
+        return this.heap.get(this.heap.size() - 1);
+    }
 
     @Override
     public boolean isEmpty() {

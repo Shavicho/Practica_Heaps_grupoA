@@ -5,27 +5,27 @@ public class PriorityQueueHeap<T extends Comparable<T>> implements PriQueHeaInt<
     private Heap<Elemento<T>> heap;
 
     public PriorityQueueHeap() {
-        heap = new Heap<>();
+        this.heap = new Heap<Elemento<T>>();
     }
 
     @Override
     public void enqueue(T elemento, int prioridad) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.heap.insertar(new Elemento<>(elemento, prioridad));
     }
 
     @Override
-    public T dequeue() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public T dequeue() throws Exception {
+        return this.heap.eliminarMaximo().getElemento();
     }
 
     @Override
-    public T front() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public T front() throws Exception {
+        return this.heap.obtenerMaximo().getElemento();
     }
 
     @Override
     public T back() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.heap.obtenerMinimo().getElemento();
     }
 
 }
