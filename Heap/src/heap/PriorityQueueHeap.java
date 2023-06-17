@@ -28,4 +28,8 @@ public class PriorityQueueHeap<T extends Comparable<T>> implements PriQueHeaInt<
         return this.heap.obtenerMinimo().getElemento();
     }
 
+    @Override
+    public String toString() {
+        return heap.toString();
+    }
 }

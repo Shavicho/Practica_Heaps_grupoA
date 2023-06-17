@@ -13,7 +13,7 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
     @Override
     public void insertar(T elemento) {
         this.heap.add(elemento);
-        flotar(this.heap.size() - 1); //Este metodo debe flotar el elemento
+        flotar(this.heap.size() - 1); //Este metodo debe flotar el ultimo elemento
     }
 
     @Override
@@ -26,7 +26,7 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
 
         if (!this.heap.isEmpty()) {
             this.heap.set(0, ultimoElemento);
-            hundir(0); // debe undir el elemento 
+            hundir(0); // debe undir el primer elemento 
         }
         return maximo;
     }
@@ -91,6 +91,19 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
 
     private int getIndiceHijoIzquierdo(int indice) {
         return 2 * indice + 1;
+    }
+    
+    private int getIndiceHijoDerecho(int indice) {
+        return 2 * indice + 2;
+    }
+
+    @Override
+    public String toString() {
+        String content = "{";
+        for(T element:heap){
+            content+=(element+",");
+        }
+        return content + "}";
     }
 
 }
