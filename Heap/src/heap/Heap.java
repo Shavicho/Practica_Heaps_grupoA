@@ -38,13 +38,40 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
         }
         return this.heap.get(0);
     }
-    
+
     @Override
     public T obtenerMinimo() throws Exception {
         if (this.heap.isEmpty()) {
             throw new Exception("El heap esta vacio");
         }
-        return this.heap.get(this.heap.size() - 1);
+        return this.minimo();
+    }
+
+    private int altura() {
+        return (int) Math.floor(Math.log(this.heap.size()) / Math.log(2));
+    }
+
+    private T minimo() {
+        ArrayList<T> arregloMinimo = new ArrayList<T>();
+        int start = (int) Math.pow(2, this.altura()) - 1;
+        for (int i = (int) Math.pow(2, this.altura()) - 1; i < this.size(); i++) {
+            T elemento = this.heap.get(i);
+            arregloMinimo.add(elemento);
+            int indicePadre = getIndicePadre(i-start);//devolver el indice padre
+            int j = i-start;
+            
+            while (j > 0 && elemento.compareTo(arregloMinimo.get(indicePadre)) < 0) {
+                arregloMinimo.set(j, arregloMinimo.get(indicePadre));
+                j = indicePadre;
+                indicePadre = getIndicePadre(j);//devolver el indice padre
+            }
+            arregloMinimo.set(j, elemento);
+        }
+        return arregloMinimo.get(0);
+    }
+
+    private int size() {
+        return this.heap.size();
     }
 
     @Override
@@ -92,7 +119,7 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
     private int getIndiceHijoIzquierdo(int indice) {
         return 2 * indice + 1;
     }
-    
+
     private int getIndiceHijoDerecho(int indice) {
         return 2 * indice + 2;
     }
@@ -100,8 +127,8 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
     @Override
     public String toString() {
         String content = "{";
-        for(T element:heap){
-            content+=(element+",");
+        for (T element : heap) {
+            content += (element + ",");
         }
         return content + "}";
     }
