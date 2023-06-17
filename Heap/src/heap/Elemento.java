@@ -33,7 +33,6 @@ public class Elemento<T extends Comparable<T>> implements Comparable<Elemento<T>
 
     @Override
     public String toString() {
-        //return "Elemento{" + "prioridad=" + prioridad + ", elemento=" + elemento + '}';
-        return "prioridad=" + prioridad;
+        return "|" + prioridad+"|";
     }
 }
