@@ -51,23 +51,21 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
         return (int) Math.floor(Math.log(this.heap.size()) / Math.log(2));
     }
 
-    private T minimo() {
-        ArrayList<T> arregloMinimo = new ArrayList<T>();
-        int start = (int) Math.pow(2, this.altura()) - 1;
-        for (int i = (int) Math.pow(2, this.altura()) - 1; i < this.size(); i++) {
-            T elemento = this.heap.get(i);
-            arregloMinimo.add(elemento);
-            int indicePadre = getIndicePadre(i-start);//devolver el indice padre
-            int j = i-start;
-            
-            while (j > 0 && elemento.compareTo(arregloMinimo.get(indicePadre)) < 0) {
-                arregloMinimo.set(j, arregloMinimo.get(indicePadre));
-                j = indicePadre;
-                indicePadre = getIndicePadre(j);//devolver el indice padre
-            }
-            arregloMinimo.set(j, elemento);
+   private T minimo() {
+        if (this.heap.isEmpty()) {
+            throw new IllegalStateException("El heap está vacío");
         }
-        return arregloMinimo.get(0);
+    
+        T minimo = this.heap.get(0);
+    
+        for (int i = 1; i < this.heap.size(); i++) {
+            T elemento = this.heap.get(i);
+            if (elemento.compareTo(minimo) < 0) {
+                minimo = elemento;
+            }
+        }
+    
+        return minimo;
     }
 
     private int size() {
